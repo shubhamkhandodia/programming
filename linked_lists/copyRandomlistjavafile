@@ -1,0 +1,92 @@
+/*
+// Definition for a Node.
+class Node {
+    int val;
+    Node next;
+    Node random;
+
+    public Node(int val) {
+        this.val = val;
+        this.next = null;
+        this.random = null;
+    }
+}
+*/
+class Solution {
+    public Node copyRandomList(Node head) 
+    {
+        if(head == null)
+            return head;
+        
+        if(head.next == null)
+        {
+            Node x1 = new Node(head.val);
+            Node head2 = x1;
+            
+            if(head.random == null)
+                head2.random = null;
+            
+            else if(head.random == head)
+                head2.random = head2;
+            
+            return head2;
+        }
+        
+        Node curr = head;
+        
+        while(curr!=null)
+        {
+            Node newmiddle = new Node(curr.val);
+            
+            newmiddle.next = curr.next;
+            curr.next = newmiddle;
+            curr = newmiddle.next;
+        }
+        
+        curr = head;
+        
+        while(true)
+        {
+            
+            if(curr.next.next == null)
+            {
+                if(curr.random == null)
+                    curr.next.random = null;
+                else
+                curr.next.random = curr.random.next;
+                
+                break;
+            }
+            
+            if(curr.random == null)
+                curr.next.random = null;
+            
+            else
+                curr.next.random = curr.random.next;
+            
+            curr = curr.next.next;
+        }
+        
+        curr = head;
+        
+        Node head2 = curr.next, curr2 = curr.next;
+        
+        while(true)
+        {
+            if(curr2.next == null)
+            {
+                curr.next = null;
+                break;
+            }
+            curr.next = curr2.next;
+            curr = curr2.next;
+            
+            curr2.next = curr.next;
+            curr2 = curr2.next;
+        }
+        
+       // curr2.next = null;
+        
+        return head2;
+    }
+}

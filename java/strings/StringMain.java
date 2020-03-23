@@ -48,10 +48,11 @@ public class StringMain{
     else
     System.out.println("strings do not point to the same object");
 
-    //third method : using compareTo method (give spositive value if not in dictionary order 0 if same and -ve if in dictionary order)
+    //third method : using compareTo method (gives positive value if not in dictionary order 0 if same and -ve if in dictionary order)
 
     System.out.println(x.compareTo(str)); //str contains good morning and x contains sachin so output is 12
                                           //explanation : s is 12 places ahead of g(g is not counted but s is)
+    									  //similarly str.compareTo(x) will give -12
 
     //what happens when one s is small and other one is capital ?
     //Ans. 32 because difference between the ascii values 
@@ -73,7 +74,8 @@ public class StringMain{
 
     //SUBSTRING EXTRACTION
 
-    //two methods : one only containing starting index and other containing both start and end index(start inclusive and end exclusive)
+    //two methods : one only containing starting index and other containing both start and end index
+    //(start inclusive and end exclusive)
 
     String s="hello";  
     System.out.println(s.substring(0,2));//he
@@ -82,7 +84,7 @@ public class StringMain{
 
     int length = s.length(); //length
 
-    //a method to convrt any datatype into string
+    //a method to convert any datatype into string
 
     String anyvalue;
 
