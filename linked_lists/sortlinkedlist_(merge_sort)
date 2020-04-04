@@ -1,0 +1,59 @@
+public ListNode sortList(ListNode head) 
+    {
+        if(head == null || head.next == null)
+            return head;
+        
+        
+        ListNode prev = null, slow = head, fast = head;
+        
+        while(fast!=null && fast.next !=null)
+        {
+            prev = slow;
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        
+        prev.next = null;
+        
+        ListNode x1 = sortList(head);
+        ListNode x2 = sortList(slow);
+        
+        return merge(x1,x2);
+    }
+    
+    public ListNode merge(ListNode y1, ListNode y2)
+    {
+        ListNode temp = new ListNode(-1);
+        
+        ListNode curr = temp;
+        
+        while(y1!=null && y2!=null)
+        {
+            if(y1.val > y2.val)
+            {
+                curr.next = y2;
+                y2 = y2.next;
+            }
+            
+            else
+            {
+                curr.next = y1;
+                y1 = y1.next;
+            }
+            
+            curr = curr.next;
+        }
+        
+        if(y1!=null)
+        {
+            curr.next = y1;
+        }
+        
+        if(y2!=null)
+        {
+            curr.next = y2;
+        }
+        
+        return temp.next;
+    }
+}
