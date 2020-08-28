@@ -85,6 +85,7 @@ public class StringMain{
     int length = s.length(); //length
 
     //a method to convert any datatype into string
+    //actually a very important method , it can also convert a char array into string
 
     String anyvalue;
 
@@ -96,6 +97,10 @@ public class StringMain{
     anyvalue = String.valueOf(xc)+" "+String.valueOf(yz)+" "+String.valueOf(n)+" "+String.valueOf(m);
 
     System.out.println(anyvalue);
+
+    char[] x1 = {'a','b','c'};
+
+    String stringusingchararray = String.valueOf(x1);
 
     //replace method
 
