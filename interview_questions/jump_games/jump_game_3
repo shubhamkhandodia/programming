@@ -1,0 +1,50 @@
+//given a random index find out if we can reach an index containing element 0
+//we can only perform operations index+arr[index] or index-arr[index]
+
+class jumpgame3
+{
+    public boolean canReach(int[] arr, int start) 
+    {
+        boolean answer = false;
+        
+        if(arr.length<=1)
+        {
+            answer = true;
+        }
+        
+        boolean[] visited = new boolean[arr.length];
+        
+        Arrays.fill(visited,false);
+        
+        Queue<Integer> queue = new LinkedList<>();
+        
+        queue.add(start);
+        visited[start] = true;
+        
+        while(!queue.isEmpty())
+        {
+            int curr = queue.poll();
+            
+            if(arr[curr]==0)
+            {
+                answer = true;
+            }
+            else
+            {
+                if(curr+arr[curr]<arr.length && visited[curr+arr[curr]] == false)
+                {
+                    queue.add(curr+arr[curr]);
+                    visited[curr+arr[curr]] = true;
+                }
+
+                if(curr-arr[curr]>=0 && visited[curr-arr[curr]] == false)
+                {
+                    queue.add(curr-arr[curr]);
+                    visited[curr-arr[curr]] = true;
+                }
+            }
+        }
+        
+        return answer;
+    }
+}

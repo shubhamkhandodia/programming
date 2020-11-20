@@ -1,0 +1,22 @@
+//determine whether you can reach the last index starting from 0 or not
+
+class Solution 
+{
+    public boolean canJump(int[] nums) 
+    {
+        int lastgoodindex = nums.length-1;
+        
+        for(int i = nums.length-1;i>=0;i--)
+        {
+            if(i+nums[i]>=lastgoodindex)
+            {
+                lastgoodindex = i;
+            }
+        }
+        
+        if(lastgoodindex == 0)
+            return true;
+        else
+            return false;
+    }
+}

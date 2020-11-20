@@ -1,0 +1,31 @@
+
+//find the minimum number of jumps required to reach the end
+
+class jumpgame2 
+{
+    public int jump(int[] nums) 
+    {
+        int i,j;
+        int[] minjumps = new int[nums.length];
+        
+        for(i=0;i<nums.length;i++)
+        {
+            if(i==0)
+                minjumps[i] = 0;
+            else
+            minjumps[i] = Integer.MAX_VALUE;
+        }
+        
+        for(i=0;i<nums.length;i++)
+        {
+            for(j=1;j<=nums[i];j++)
+            {
+                int next = Math.min(i+j, nums.length-1);
+        
+                minjumps[next] = Math.min(minjumps[next], 1 + minjumps[i]);
+            }
+        }
+        
+        return minjumps[nums.length-1];
+    }
+}
